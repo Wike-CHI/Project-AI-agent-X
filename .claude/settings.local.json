@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:python.langchain.com)",
+      "WebFetch(domain:microsoft.github.io)",
+      "WebFetch(domain:docs.crewai.com)",
+      "WebFetch(domain:autogpt.readthedocs.io)",
+      "WebFetch(domain:docs.llamaindex.ai)",
+      "WebFetch(domain:docs.langchain.com)",
+      "WebFetch(domain:developers.llamaindex.ai)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

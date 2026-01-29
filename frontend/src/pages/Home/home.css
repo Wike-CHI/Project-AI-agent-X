@@ -565,11 +565,27 @@
   transform: translateY(-1px);
 }
 
+/* 深色模式 - 次要按钮 */
+.dark .btn-secondary {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #E2E8F0;
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgba(99, 102, 241, 0.3);
+}
+
 .btn-icon {
   width: 44px;
   height: 44px;
   padding: 0;
   border-radius: 12px;
+}
+
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 /* 头像通用样式 */

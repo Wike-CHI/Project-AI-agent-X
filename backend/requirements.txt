@@ -1,0 +1,51 @@
+# AI Companion Backend Dependencies
+
+# FastAPI and Web Server
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Database
+sqlmodel==0.0.14
+aiosqlite==0.19.0
+alembic==1.13.1
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# AI Framework - Multi-Agent
+crewai==0.80.0
+agno==1.0.0
+
+# RAG Framework
+llama-index==0.10.0
+llama-index-llms-openai==0.1.0
+llama-index-llms-anthropic==0.1.0
+llama-index-llms-qwen==0.1.0
+llama-index-embeddings-openai==0.1.0
+llama-index-embeddings-huggingface==0.2.0
+
+# Vector Database
+qdrant-client==1.9.0
+sentence-transformers==2.2.2
+
+# Graph Database
+neo4j==5.15.0
+
+# Configuration
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# Utilities
+httpx==0.26.0
+tenacity==8.2.3
+
+# Development & Testing
+pytest==7.4.0
+pytest-asyncio==0.23.0
+pytest-cov==4.1.0
+black==23.12.1
+ruff==0.1.6
+mypy==1.8.0

@@ -1,29 +1,31 @@
-## 1. 数据库设计
-- [ ] 1.1 设计并创建 `reality_records` 表（行为记录）
-- [ ] 1.2 设计并创建 `project_states` 表（项目状态）
-- [ ] 1.3 扩展现有 `memories` 表支持短期/长期记忆
-- [ ] 1.4 编写数据库迁移脚本
+## 1. 数据库模型设计
+- [ ] 1.1 使用 `SQLModel` 定义 `RealityRecord` 模型（行为记录）
+- [ ] 1.2 使用 `SQLModel` 定义 `ProjectState` 模型（项目状态）
+- [ ] 1.3 使用 `SQLModel` 定义 `ShortTermMemory` 模型（短期记忆）
+- [ ] 1.4 使用 `SQLModel` 定义 `LongTermMemory` 模型（长期记忆）
 
 ## 2. 核心服务实现
-- [ ] 2.1 实现 `RealityRecorder` 服务类
+- [ ] 2.1 实现 `RealityRecorder` 服务类（使用 `AsyncSession`）
 - [ ] 2.2 实现 `ProjectMemory` 服务类（短期记忆）
-- [ ] 2.3 实现 `LongTermMemory` 服务类（长期记忆）
-- [ ] 2.4 实现记忆自动总结机制
-- [ ] 2.5 实现记忆过期清理任务
+- [ ] 2.3 实现 `LongTermMemory` 服务类（复用 `QdrantStore`）
+- [ ] 2.4 实现记忆自动总结机制（使用 LLM）
+- [ ] 2.5 实现记忆过期清理任务（后台任务）
 
-## 3. API 端点实现
-- [ ] 3.1 创建 `POST /api/v1/record/behavior` - 记录AI行为
-- [ ] 3.2 创建 `POST /api/v1/record/state` - 记录项目状态
-- [ ] 3.3 创建 `GET /api/v1/record/states` - 获取项目状态历史
-- [ ] 3.4 创建 `GET /api/v1/memory/short` - 获取短期记忆
-- [ ] 3.5 创建 `GET /api/v1/memory/long` - 获取长期记忆
-- [ ] 3.6 创建 `DELETE /api/v1/memory/{id}` - 删除记忆
+## 3. API 端点实现（遵循现有 router 模式）
+- [ ] 3.1 创建 `POST /record/behavior` - 记录AI行为
+- [ ] 3.2 创建 `POST /record/state` - 记录项目状态
+- [ ] 3.3 创建 `GET /record/states` - 获取项目状态历史
+- [ ] 3.4 创建 `GET /memory/short` - 获取短期记忆
+- [ ] 3.5 创建 `GET /memory/long` - 获取长期记忆
+- [ ] 3.6 创建 `DELETE /memory/{id}` - 删除记忆
+- [ ] 3.7 在 `routes.py` 中注册新路由
 
 ## 4. 与现有系统集成
 - [ ] 4.1 在 `ChatService` 中集成行为记录
 - [ ] 4.2 在 `Agent` 执行时自动记录决策
-- [ ] 4.3 集成现有 `GraphMemory` 服务
-- [ ] 4.4 集成现有向量存储（Qdrant）
+- [ ] 4.3 复用现有 `GraphMemory` 服务的关系追踪
+- [ ] 4.4 复用现有 `QdrantStore` 进行长期记忆语义搜索
+- [ ] 4.5 复用现有 `get_db()` 依赖注入获取 `AsyncSession`
 
 ## 5. 测试
 - [ ] 5.1 编写服务单元测试

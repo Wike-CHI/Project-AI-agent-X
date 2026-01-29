@@ -28,13 +28,16 @@
 ## Decisions
 
 ### 1. 记录存储架构
-- **行为记录**：使用SQLite表存储（`reality_records`）
-- **项目状态**：使用SQLite表存储（`project_states`）
+- **行为记录**：使用 `SQLModel` + `AsyncSession` 存储到 SQLite
+- **项目状态**：使用 `SQLModel` + `AsyncSession` 存储到 SQLite
 - **记忆存储**：
-  - 短期记忆：内存缓存 + SQLite持久化
-  - 长期记忆：向量存储（Qdrant）+ SQLite索引
+  - 短期记忆：内存缓存 + SQLite（使用 `AsyncSession`）
+  - 长期记忆：复用现有 `QdrantStore` + SQLite索引
 
-**决策理由**：平衡性能和可靠性，简单记录用SQLite，向量数据用Qdrant。
+**决策理由**：完全复用现有基础设施：
+- `app.models.database.py` 提供的 `AsyncSessionLocal`
+- `app.rag.vector_store.py` 提供的 `QdrantStore` 类
+- `sqlmodel` 统一 ORM + Pydantic 验证
 
 ### 2. 记忆生命周期
 - **短期记忆**：会话结束时自动转换为长期记忆（摘要形式）

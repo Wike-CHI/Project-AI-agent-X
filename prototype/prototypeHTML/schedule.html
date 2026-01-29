@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 日程管理</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="schedule.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item active">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 头部 -->
+            <div class="schedule-header">
+                <h1>日程管理</h1>
+                <button class="btn btn-primary">
+                    <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                    添加日程
+                </button>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="schedule-content">
+                <!-- 日历 -->
+                <div class="calendar-section">
+                    <h2 class="calendar-title">2024年1月</h2>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekday">日</div>
+                        <div class="calendar-weekday">一</div>
+                        <div class="calendar-weekday">二</div>
+                        <div class="calendar-weekday">三</div>
+                        <div class="calendar-weekday">四</div>
+                        <div class="calendar-weekday">五</div>
+                        <div class="calendar-weekday">六</div>
+
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day">27</div>
+
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day today">29</div>
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                    </div>
+                </div>
+
+                <!-- 当日日程 -->
+                <div class="daily-schedule">
+                    <h2 class="day-title">今日 - 1月29日 星期三</h2>
+
+                    <!-- 普通日程 -->
+                    <div class="schedule-event">
+                        <div class="schedule-event-header">
+                            <span class="event-time">
+                                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                                09:00 - 10:30
+                            </span>
+                        </div>
+                        <h3 class="event-title">项目评审会议</h3>
+                        <p class="event-location">
+                            <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
+                            会议室A | 参与者: 张三、李四
+                        </p>
+                        <div class="event-actions">
+                            <button class="btn btn-sm btn-secondary">查看详情</button>
+                            <button class="btn btn-sm btn-secondary">编辑</button>
+                        </div>
+                    </div>
+
+                    <!-- 警告日程 -->
+                    <div class="schedule-event warning">
+                        <div class="schedule-event-header">
+                            <span class="event-time">
+                                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                                10:45 - 11:45
+                            </span>
+                        </div>
+                        <h3 class="event-title">代码审查</h3>
+                        <div class="event-warning">
+                            <i data-lucide="alert-triangle" style="width: 12px; height: 12px;"></i>
+                            与前一个会议间隔仅15分钟
+                        </div>
+                        <p class="event-location">
+                            <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
+                            在线会议
+                        </p>
+                        <div class="event-actions">
+                            <button class="btn btn-sm btn-secondary">查看详情</button>
+                            <button class="btn btn-sm btn-secondary">编辑</button>
+                        </div>
+                    </div>
+
+                    <!-- AI建议 -->
+                    <div class="suggestion-card">
+                        <div class="suggestion-header">
+                            <i data-lucide="lightbulb" class="suggestion-icon" style="width: 18px; height: 18px;"></i>
+                            <span class="suggestion-title">AI 建议</span>
+                        </div>
+                        <p class="suggestion-content">
+                            两个会议只隔15分钟，建议推迟半小时，这样可以留出更多时间准备和休息。
+                        </p>
+                        <div class="suggestion-actions">
+                            <button class="btn btn-sm btn-primary">采纳建议</button>
+                            <button class="btn btn-sm btn-secondary">忽略</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 日历日期点击
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', function() {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('today'));
+                this.classList.add('today');
+            });
+        });
+    </script>
+</body>
+</html>

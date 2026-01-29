@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 智能体商店</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="store.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item active">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 头部 -->
+            <div class="store-header">
+                <h1>智能体商店</h1>
+                <button class="btn btn-primary">我的智能体</button>
+            </div>
+
+            <!-- 搜索栏 -->
+            <div class="store-search-section">
+                <div class="store-search-bar">
+                    <div class="search-input-wrapper">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="store-search-input" placeholder="搜索智能体...">
+                    </div>
+                    <div class="store-tags">
+                        <span class="tag tag-hot">
+                            <i data-lucide="flame" style="width: 14px; height: 14px;"></i>
+                            热门
+                        </span>
+                        <span class="tag tag-work">
+                            <i data-lucide="briefcase" style="width: 14px; height: 14px;"></i>
+                            工作
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 热门推荐 -->
+            <h2 class="section-title">热门推荐</h2>
+            <div class="agent-grid">
+                <!-- 智能体卡片 1 -->
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background-color: #FEF3C7;">
+                        <i data-lucide="briefcase" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 class="agent-card-title">财务助手</h3>
+                    <p class="agent-card-description">专属财务顾问，帮你管理财务规划</p>
+                    <p class="agent-card-rating">
+                        <i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i>
+                        4.8
+                    </p>
+                    <button class="agent-card-btn" onclick="installAgent(this)">安装</button>
+                </div>
+
+                <!-- 智能体卡片 2 -->
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background-color: #FCE7F3;">
+                        <i data-lucide="palette" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 class="agent-card-title">创意写手</h3>
+                    <p class="agent-card-description">激发创意灵感，辅助文案创作</p>
+                    <p class="agent-card-rating">
+                        <i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i>
+                        4.9
+                    </p>
+                    <button class="agent-card-btn" onclick="installAgent(this)">安装</button>
+                </div>
+
+                <!-- 智能体卡片 3 -->
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background-color: #DBEAFE;">
+                        <i data-lucide="bar-chart-2" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 class="agent-card-title">数据分析</h3>
+                    <p class="agent-card-description">智能数据分析，生成可视化报告</p>
+                    <p class="agent-card-rating">
+                        <i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i>
+                        4.7
+                    </p>
+                    <button class="agent-card-btn" onclick="installAgent(this)">安装</button>
+                </div>
+
+                <!-- 智能体卡片 4 -->
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background-color: #D1FAE5;">
+                        <i data-lucide="heart" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 class="agent-card-title">健康顾问</h3>
+                    <p class="agent-card-description">健康管理建议，运动饮食指导</p>
+                    <p class="agent-card-rating">
+                        <i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i>
+                        4.6
+                    </p>
+                    <button class="agent-card-btn" onclick="installAgent(this)">安装</button>
+                </div>
+            </div>
+
+            <!-- 我的智能体 -->
+            <h2 class="section-title">我的智能体 (已激活)</h2>
+            <div class="agent-grid">
+                <div class="agent-card my-agent-card">
+                    <div class="agent-card-icon" style="background-color: #FEF3C7;">
+                        <i data-lucide="briefcase" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <div class="my-agent-header">
+                        <h3 class="agent-card-title">财务助手</h3>
+                        <span class="my-agent-badge">
+                            <i data-lucide="check" style="width: 10px; height: 10px;"></i>
+                            已激活
+                        </span>
+                    </div>
+                    <p class="agent-card-description">专属财务顾问，帮你管理财务规划</p>
+                    <p class="my-agent-stats">调用次数: 127次 | 最后使用: 2小时前</p>
+                    <button class="agent-card-btn installed">已安装</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 安装智能体功能
+        function installAgent(button) {
+            const card = button.closest('.agent-card');
+            const title = card.querySelector('.agent-card-title').textContent;
+
+            if (confirm(`确定要安装 "${title}" 智能体吗？`)) {
+                button.textContent = '安装中...';
+                button.disabled = true;
+
+                // 模拟安装过程
+                setTimeout(() => {
+                    button.textContent = '已安装';
+                    button.classList.add('installed');
+                    alert(`"${title}" 智能体安装成功！`);
+                }, 1000);
+            }
+        }
+
+        // 搜索功能
+        const searchInput = document.querySelector('.store-search-input');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll('.agent-card').forEach(card => {
+                const title = card.querySelector('.agent-card-title').textContent.toLowerCase();
+                const description = card.querySelector('.agent-card-description').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

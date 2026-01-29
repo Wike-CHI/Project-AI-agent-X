@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 设置</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="settings.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <h1 class="settings-page-title">设置</h1>
+
+            <!-- 账户管理 -->
+            <section class="settings-section">
+                <h2 class="settings-section-title">
+                    <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+                    账户管理
+                </h2>
+
+                <div class="account-avatar-section">
+                    <div class="account-avatar">张</div>
+                    <div class="account-avatar-label">
+                        <p>头像</p>
+                        <a href="#">[更换]</a>
+                    </div>
+                </div>
+
+                <div class="account-field">
+                    <p class="account-field-label">昵称</p>
+                    <p class="account-field-value">张三</p>
+                </div>
+
+                <div class="account-field">
+                    <p class="account-field-label">邮箱</p>
+                    <p class="account-field-value">zhang***@email.com</p>
+                </div>
+
+                <div class="account-actions">
+                    <button class="btn btn-secondary" onclick="alert('退出登录')">退出登录</button>
+                    <button class="btn" style="background-color: var(--error); color: white;"
+                            onclick="confirmDeleteAccount()">删除账户</button>
+                </div>
+            </section>
+
+            <!-- LLM 模型配置 -->
+            <section class="settings-section">
+                <h2 class="settings-section-title">
+                    <i data-lucide="bot" style="width: 20px; height: 20px;"></i>
+                    LLM模型配置
+                </h2>
+
+                <div class="llm-field">
+                    <p class="llm-field-label">主模型</p>
+                    <p class="llm-field-value">
+                        <span>MiniMax</span>
+                        <a href="#" style="margin-left: 8px;">[切换]</a>
+                    </p>
+                </div>
+
+                <div class="llm-field">
+                    <p class="llm-field-label">温度值</p>
+                    <p class="llm-field-value">
+                        0.7
+                        <a href="#" style="margin-left: 8px;">[?]</a>
+                    </p>
+                </div>
+
+                <div class="llm-field">
+                    <p class="llm-field-label">APIKey</p>
+                    <p class="llm-field-value">
+                        ••••••••••••••••
+                        <a href="#" style="margin-left: 8px;">[修改]</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 隐私与安全 -->
+            <section class="settings-section">
+                <h2 class="settings-section-title">
+                    <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
+                    隐私与安全
+                </h2>
+
+                <div class="privacy-item">
+                    <div class="privacy-checkbox">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <p class="privacy-text">本地优先处理敏感数据</p>
+                </div>
+
+                <div class="privacy-item">
+                    <div class="privacy-checkbox">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <p class="privacy-text">端到端加密传输</p>
+                </div>
+
+                <div class="privacy-select">
+                    <p class="account-field-label">自动记忆保留</p>
+                    <p class="account-field-value">
+                        <span>30天</span>
+                        <a href="#" style="margin-left: 8px;">▼</a>
+                    </p>
+                </div>
+
+                <div class="privacy-actions">
+                    <button class="btn btn-primary">导出所有数据</button>
+                    <button class="btn" style="background-color: var(--error); color: white;"
+                            onclick="confirmClearMemories()">清除所有记忆</button>
+                </div>
+            </section>
+
+            <!-- 外观设置 -->
+            <section class="settings-section">
+                <h2 class="settings-section-title">
+                    <i data-lucide="palette" style="width: 20px; height: 20px;"></i>
+                    外观设置
+                </h2>
+
+                <div class="appearance-field">
+                    <p class="appearance-field-label">主题</p>
+                    <div class="theme-options">
+                        <button class="theme-option active">跟随系统</button>
+                        <button class="theme-option">浅色</button>
+                        <button class="theme-option">深色</button>
+                    </div>
+                </div>
+
+                <div class="appearance-field">
+                    <p class="appearance-field-label">字体大小</p>
+                    <div class="theme-options">
+                        <button class="theme-option active">默认</button>
+                        <button class="theme-option">大</button>
+                        <button class="theme-option">特大</button>
+                    </div>
+                </div>
+
+                <div class="appearance-field">
+                    <p class="appearance-field-label">伴侣位置</p>
+                    <div class="theme-options">
+                        <button class="theme-option active">左侧</button>
+                        <button class="theme-option">右侧</button>
+                        <button class="theme-option">底部</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 主题切换
+        document.querySelectorAll('.theme-options').forEach(group => {
+            group.querySelectorAll('.theme-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    group.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        // 删除账户确认
+        function confirmDeleteAccount() {
+            if (confirm('确定要删除账户吗？此操作不可恢复，所有数据将被永久删除。')) {
+                if (confirm('再次确认：真的要删除账户吗？')) {
+                    alert('账户删除功能需要后端支持');
+                }
+            }
+        }
+
+        // 清除记忆确认
+        function confirmClearMemories() {
+            if (confirm('确定要清除所有记忆吗？此操作不可恢复。')) {
+                alert('记忆清除功能需要后端支持');
+            }
+        }
+    </script>
+</body>
+</html>

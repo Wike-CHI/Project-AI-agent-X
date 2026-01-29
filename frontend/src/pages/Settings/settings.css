@@ -1,0 +1,387 @@
+/* 设置页面样式 */
+
+.settings-layout {
+  height: calc(100vh - 32px);
+  margin: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.settings-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: 100%;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #7C3AED rgba(124, 58, 237, 0.1);
+}
+
+.settings-content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.settings-content-wrapper::-webkit-scrollbar-track {
+  background: rgba(124, 58, 237, 0.05);
+  border-radius: 10px;
+}
+
+.settings-content-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  border-radius: 10px;
+}
+
+.settings-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+}
+
+.settings-page-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #171717;
+  margin: 0 0 32px;
+}
+
+.settings-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #171717;
+  margin: 0 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 账户管理 */
+.account-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.account-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.account-avatar-label {
+  flex: 1;
+}
+
+.account-avatar-label p {
+  margin: 0;
+  font-size: 13px;
+  color: #737373;
+}
+
+.account-avatar-label a {
+  color: #7C3AED;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.account-avatar-label a:hover {
+  text-decoration: underline;
+}
+
+.account-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #EDE9FE;
+}
+
+.account-field:last-child {
+  border-bottom: none;
+}
+
+.account-field-label {
+  font-size: 15px;
+  color: #404040;
+  margin: 0;
+}
+
+.account-field-value {
+  font-size: 15px;
+  color: #737373;
+  margin: 0;
+}
+
+.account-field-value a {
+  color: #7C3AED;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.account-field-value a:hover {
+  text-decoration: underline;
+}
+
+.account-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* LLM 配置 */
+.llm-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #EDE9FE;
+}
+
+.llm-field:last-child {
+  border-bottom: none;
+}
+
+.llm-field-label {
+  font-size: 15px;
+  color: #404040;
+  margin: 0;
+}
+
+.llm-field-value {
+  font-size: 15px;
+  color: #737373;
+  margin: 0;
+}
+
+.llm-field-value span {
+  color: #7C3AED;
+  cursor: pointer;
+}
+
+.llm-field-value a {
+  color: #7C3AED;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.llm-field-value a:hover {
+  text-decoration: underline;
+}
+
+/* 隐私设置 */
+.privacy-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #EDE9FE;
+  cursor: pointer;
+}
+
+.privacy-item:last-child {
+  border-bottom: none;
+}
+
+.privacy-checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #10B981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.privacy-checkbox i,
+.privacy-checkbox svg {
+  color: white;
+  width: 12px;
+  height: 12px;
+}
+
+.privacy-text {
+  font-size: 15px;
+  color: #404040;
+  flex: 1;
+  margin: 0;
+}
+
+.privacy-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #EDE9FE;
+}
+
+.privacy-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* 外观设置 */
+.appearance-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #EDE9FE;
+}
+
+.appearance-field:last-child {
+  border-bottom: none;
+}
+
+.appearance-field-label {
+  font-size: 15px;
+  color: #404040;
+  margin: 0;
+}
+
+.appearance-field-value {
+  font-size: 15px;
+  color: #737373;
+  margin: 0;
+}
+
+.theme-options {
+  display: flex;
+  gap: 12px;
+}
+
+.theme-option {
+  padding: 8px 16px;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 15px;
+  color: #404040;
+}
+
+.theme-option:hover {
+  border-color: #7C3AED;
+}
+
+.theme-option.active {
+  background-color: #7C3AED;
+  color: white;
+  border-color: #7C3AED;
+}
+
+/* 按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+.btn-secondary {
+  background-color: #F5F3FF;
+  color: #404040;
+}
+
+.btn-secondary:hover {
+  background-color: #E5E5E5;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: #EF4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #DC2626;
+  transform: translateY(-1px);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .settings-page-title {
+    font-size: 24px;
+  }
+
+  .account-field,
+  .llm-field,
+  .appearance-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .account-actions,
+  .privacy-actions {
+    flex-direction: column;
+  }
+
+  .account-actions .btn,
+  .privacy-actions .btn {
+    width: 100%;
+  }
+
+  .theme-options {
+    flex-wrap: wrap;
+  }
+}

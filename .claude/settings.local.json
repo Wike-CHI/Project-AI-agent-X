@@ -18,7 +18,10 @@
       "Bash(oc folder ls:*)",
       "Bash(oc doc create:*)",
       "Bash(set:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(openspec list)",
+      "Bash(openspec list:*)",
+      "Bash(openspec validate:*)"
     ]
   }
 }

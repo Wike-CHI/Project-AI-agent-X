@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 性格养成系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="personality.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item active">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 头部 -->
+            <div class="personality-header">
+                <h1>性格养成系统</h1>
+                <button class="btn btn-primary" onclick="savePersonality()">保存配置</button>
+            </div>
+
+            <!-- 头像预览 -->
+            <div class="avatar-preview-section">
+                <div class="avatar-preview">小艾</div>
+                <p class="avatar-label">伴侣3D/2D形象</p>
+                <p class="avatar-label">实时预览区域</p>
+            </div>
+
+            <!-- 性格参数 -->
+            <div class="personality-params">
+                <h2 class="params-title">性格参数</h2>
+
+                <!-- 共情能力 -->
+                <div class="param-item">
+                    <div class="param-header">
+                        <span class="param-label">共情能力</span>
+                        <span class="param-value" id="empathy-value">设置为 70%</span>
+                    </div>
+                    <p class="param-description">决定伴侣对你情绪的敏感度和回应方式</p>
+                    <div class="param-slider-container">
+                        <input type="range" class="param-range" min="0" max="100" value="70"
+                               oninput="updateParam('empathy', this.value)">
+                        <div class="param-scale">
+                            <span>低</span>
+                            <span>高</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 幽默程度 -->
+                <div class="param-item">
+                    <div class="param-header">
+                        <span class="param-label">幽默程度</span>
+                        <span class="param-value" id="humor-value">设置为 85%</span>
+                    </div>
+                    <div class="param-slider-container">
+                        <input type="range" class="param-range" min="0" max="100" value="85"
+                               oninput="updateParam('humor', this.value)">
+                        <div class="param-scale">
+                            <span>低</span>
+                            <span>高</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 严谨程度 -->
+                <div class="param-item">
+                    <div class="param-header">
+                        <span class="param-label">严谨程度</span>
+                        <span class="param-value" id="seriousness-value">设置为 55%</span>
+                    </div>
+                    <p class="param-description">回复的正式程度和逻辑性</p>
+                    <div class="param-slider-container">
+                        <input type="range" class="param-range" min="0" max="100" value="55"
+                               oninput="updateParam('seriousness', this.value)">
+                        <div class="param-scale">
+                            <span>低</span>
+                            <span>高</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主动程度 -->
+                <div class="param-item">
+                    <div class="param-header">
+                        <span class="param-label">主动程度</span>
+                        <span class="param-value" id="proactive-value">设置为 90%</span>
+                    </div>
+                    <p class="param-description">主动发起对话和建议的频率</p>
+                    <div class="param-slider-container">
+                        <input type="range" class="param-range" min="0" max="100" value="90"
+                               oninput="updateParam('proactive', this.value)">
+                        <div class="param-scale">
+                            <span>低</span>
+                            <span>高</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 更新参数显示
+        function updateParam(param, value) {
+            const valueElement = document.getElementById(`${param}-value`);
+            valueElement.textContent = `设置为 ${value}%`;
+        }
+
+        // 保存性格配置
+        function savePersonality() {
+            const params = {
+                empathy: document.querySelector('input[oninput*="empathy"]').value,
+                humor: document.querySelector('input[oninput*="humor"]').value,
+                seriousness: document.querySelector('input[oninput*="seriousness"]').value,
+                proactive: document.querySelector('input[oninput*="proactive"]').value
+            };
+
+            console.log('保存性格配置:', params);
+
+            // 显示保存成功提示
+            const btn = document.querySelector('.personality-header .btn');
+            const originalText = btn.textContent;
+            btn.textContent = '保存中...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = '保存成功！';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+
+            alert('性格配置已保存成功！');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 记忆管理中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="memory.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item active">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 头部 -->
+            <div class="memory-header">
+                <h1>记忆管理中心</h1>
+                <div class="memory-actions">
+                    <button class="btn btn-secondary">导入</button>
+                    <button class="btn btn-primary">导出</button>
+                </div>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="memory-content">
+                <!-- 过滤面板 -->
+                <div class="filter-panel">
+                    <h2 class="filter-title">筛选条件</h2>
+
+                    <div class="filter-group">
+                        <label class="filter-label">搜索</label>
+                        <input type="text" class="input-field" placeholder="关键词搜索...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">记忆类型</label>
+                        <div class="filter-option">
+                            <div class="filter-checkbox checked"></div>
+                            <span class="filter-option-text">情景记忆</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox"></div>
+                            <span class="filter-option-text">语义记忆</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 记忆列表 -->
+                <div class="memory-list">
+                    <div class="memory-card">
+                        <div class="memory-card-icon">
+                            <i data-lucide="calendar" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="memory-card-title">情景记忆</h3>
+                        <p class="memory-card-content">"1月27日聊到想学西班牙语"</p>
+                        <div class="memory-card-meta">
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                2024-01-27
+                            </span>
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
+                                学习
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="memory-card">
+                        <div class="memory-card-icon">
+                            <i data-lucide="coffee" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="memory-card-title">语义记忆</h3>
+                        <p class="memory-card-content">"用户最喜欢美式咖啡"</p>
+                        <div class="memory-card-meta">
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                长期记忆
+                            </span>
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
+                                偏好
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="memory-card">
+                        <div class="memory-card-icon">
+                            <i data-lucide="briefcase" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="memory-card-title">情景记忆</h3>
+                        <p class="memory-card-content">"今天开了一天的项目评审会议，感觉很累"</p>
+                        <div class="memory-card-meta">
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                2024-01-29
+                            </span>
+                            <span class="memory-card-meta-item">
+                                <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
+                                工作
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 筛选选项交互
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const checkbox = this.querySelector('.filter-checkbox');
+                checkbox.classList.toggle('checked');
+            });
+        });
+
+        // 记忆卡片点击效果
+        document.querySelectorAll('.memory-card').forEach(card => {
+            card.addEventListener('click', function() {
+                alert('查看记忆详情');
+            });
+        });
+    </script>
+</body>
+</html>

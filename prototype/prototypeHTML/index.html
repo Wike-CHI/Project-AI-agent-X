@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 伴侣 - 首页</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="home.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span class="logo-text">AI 伴侣</span>
+            </div>
+            <a href="index.html" class="nav-item active">
+                <i data-lucide="message-square" class="nav-icon"></i>
+                <span class="nav-text">对话</span>
+            </a>
+            <a href="memory.html" class="nav-item">
+                <i data-lucide="brain" class="nav-icon"></i>
+                <span class="nav-text">记忆</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i data-lucide="calendar" class="nav-icon"></i>
+                <span class="nav-text">日程</span>
+            </a>
+            <a href="store.html" class="nav-item">
+                <i data-lucide="store" class="nav-icon"></i>
+                <span class="nav-text">商店</span>
+            </a>
+            <a href="personality.html" class="nav-item">
+                <i data-lucide="smile" class="nav-icon"></i>
+                <span class="nav-text">性格</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings" class="nav-icon"></i>
+                <span class="nav-text">设置</span>
+            </a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content home-main">
+            <div class="home-layout">
+                <!-- 左侧对话区域 -->
+                <div class="chat-area">
+                    <!-- 欢迎区 -->
+                    <div class="welcome-section">
+                        <h1 class="greeting-text">早上好，张三 👋</h1>
+                        <p class="status-summary">今天有3个日程，开始对话吧</p>
+                        <div class="quick-actions">
+                            <button class="btn btn-primary">
+                                <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                                日程
+                            </button>
+                            <button class="btn btn-primary">
+                                <i data-lucide="brain" style="width: 16px; height: 16px;"></i>
+                                记忆
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 对话消息区 -->
+                    <div class="messages-container">
+                        <!-- 伴侣消息 -->
+                        <div class="message companion-message companion-message-enhanced streaming-text">
+                            <div class="avatar avatar-sm companion-avatar" style="background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);">艾</div>
+                            <div class="message-content">
+                                <p class="message-text typing-cursor">嗨！今天过得怎么样？有什么可以帮你的？</p>
+                                <div class="typing-indicator">
+                                    <span>正在输入</span>
+                                    <div class="typing-dots">
+                                        <span class="typing-dot"></span>
+                                        <span class="typing-dot"></span>
+                                        <span class="typing-dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 用户消息 -->
+                        <div class="message user-message user-message-enhanced">
+                            <div
+                                class="avatar avatar-sm user-avatar"
+                                style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);"
+                            >张</div>
+                            <div class="message-content">
+                                <p class="message-text">我今天工作有点累，想聊聊天</p>
+                            </div>
+                        </div>
+
+                        <!-- 伴侣消息 -->
+                        <div class="message companion-message companion-message-enhanced streaming-text">
+                            <div class="avatar avatar-sm companion-avatar" style="background: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);">艾</div>
+                            <div class="message-content">
+                                <p class="message-text">听起来你今天压力很大呢，要不要和我分享一下？</p>
+                                <span class="emotion-badge" style="background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%); color: #EC4899;">关心</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 输入区域 -->
+                    <div class="input-area">
+                        <button class="btn btn-icon btn-secondary">
+                            <i data-lucide="mic"></i>
+                        </button>
+                        <input type="text" class="chat-input" placeholder="输入消息...">
+                        <button class="btn btn-cta send-btn">发送</button>
+                    </div>
+                </div>
+
+                <!-- 右侧伴侣面板 -->
+                <aside class="companion-panel">
+                    <!-- 头像区 -->
+                    <div class="avatar-section card">
+                        <div class="avatar avatar-lg">小艾</div>
+                        <h3 class="avatar-name">小艾</h3>
+                        <p class="avatar-status ai-status-online">
+                            <span class="status-dot-enhanced"></span>
+                            在线 · 关注中
+                        </p>
+                    </div>
+
+                    <!-- 快捷操作 -->
+                    <div class="quick-section">
+                        <h4 class="section-title">快捷操作</h4>
+                        <div class="quick-item">
+                            <i data-lucide="sparkles" style="color: var(--primary-color);"></i>
+                            <span>聊聊今天的心情</span>
+                        </div>
+                        <div class="quick-item">
+                            <i data-lucide="lightbulb" style="color: var(--warning);"></i>
+                            <span>获取建议</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 发送消息功能
+        const chatInput = document.querySelector('.chat-input');
+        const sendBtn = document.querySelector('.send-btn');
+        const messagesContainer = document.querySelector('.messages-container');
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // 添加用户消息
+                const userMsg = document.createElement('div');
+                userMsg.className = 'message user-message user-message-enhanced streaming-text';
+                userMsg.innerHTML = `
+                <div class="avatar avatar-sm user-avatar" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);">张</div>
+                    <div class="message-content">
+                        <p class="message-text">${message}</p>
+                    </div>
+                `;
+                messagesContainer.appendChild(userMsg);
+
+                // 清空输入框
+                chatInput.value = '';
+
+                // 滚动到底部
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // 模拟伴侣回复（延迟1秒）
+                setTimeout(() => {
+                    const companionMsg = document.createElement('div');
+                    companionMsg.className = 'message companion-message companion-message-enhanced streaming-text';
+                    companionMsg.innerHTML = `
+                        <div class="avatar avatar-sm companion-avatar" style="background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);">艾</div>
+                        <div class="message-content">
+                            <p class="message-text typing-cursor">我收到了你的消息，让我想想...</p>
+                            <div class="typing-indicator">
+                                <span>正在输入</span>
+                                <div class="typing-dots">
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(companionMsg);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

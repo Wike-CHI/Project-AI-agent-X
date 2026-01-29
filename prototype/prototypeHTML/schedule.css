@@ -1,0 +1,238 @@
+/* 日程管理页面样式 */
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.schedule-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.schedule-content {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 24px;
+}
+
+/* 日历区域 */
+.calendar-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-weekday {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 8px 0;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+}
+
+.calendar-day:hover {
+    background-color: var(--light-bg);
+}
+
+.calendar-day.today {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background-color: var(--warning);
+    border-radius: 50%;
+}
+
+/* 当日日程区域 */
+.daily-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.day-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+}
+
+/* 日程卡片 */
+.schedule-event {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.2s;
+}
+
+.schedule-event:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(4px);
+}
+
+.schedule-event.warning {
+    background-color: var(--warning-light);
+    border-left-color: var(--warning);
+}
+
+.schedule-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.event-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.event-location {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.event-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.event-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+/* 建议卡片 */
+.suggestion-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.suggestion-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.suggestion-icon {
+    color: var(--success);
+}
+
+.suggestion-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--success);
+    flex: 1;
+}
+
+.suggestion-content {
+    font-size: 14px;
+    color: #166534;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.suggestion-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+    .schedule-content {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-section {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .calendar-section {
+        padding: 16px;
+    }
+
+    .calendar-day {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,202 @@
+/* 性格养成系统页面样式 */
+
+.personality-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.personality-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* 头像预览区域 */
+.avatar-preview-section {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.avatar-preview {
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+    font-weight: 600;
+}
+
+.avatar-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* 性格参数区域 */
+.personality-params {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.params-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.param-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.param-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.param-value {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.param-description {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 滑动条 */
+.param-slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.param-slider {
+    width: 100%;
+    height: 8px;
+    background-color: var(--light-bg);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.param-slider-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.param-slider-fill.primary {
+    background-color: var(--primary-color);
+}
+
+.param-slider-fill.warning {
+    background-color: #FCD34D;
+}
+
+.param-slider-fill.info {
+    background-color: #60A5FA;
+}
+
+.param-slider-fill.pink {
+    background-color: #F472B6;
+}
+
+.param-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* 滑块输入 */
+.param-range {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--light-bg);
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.param-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.param-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .personality-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .avatar-preview-section {
+        padding: 24px;
+    }
+
+    .avatar-preview {
+        width: 100px;
+        height: 100px;
+        font-size: 32px;
+    }
+
+    .personality-params {
+        padding: 16px;
+    }
+}

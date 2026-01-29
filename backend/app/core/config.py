@@ -31,19 +31,16 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
-    # LLM Providers
-    OPENAI_API_KEY: Optional[str] = None
-    OPENAI_MODEL: str = "gpt-4"
-    OPENAI_BASE_URL: str = "https://api.openai.com/v1"
+    # LLM Providers (云端API - MiniMax + Kimi)
+    MINIMAX_API_KEY: Optional[str] = None
+    MINIMAX_MODEL: str = "minimax-m2.1"
+    MINIMAX_BASE_URL: str = "https://api.minimax.chat/v1/text/chatcompletion_v2"
 
-    ANTHROPIC_API_KEY: Optional[str] = None
-    ANTHROPIC_MODEL: str = "claude-3-5-sonnet-20241022"
+    KIMI_API_KEY: Optional[str] = None
+    KIMI_MODEL: str = "kimi-k2.5"
+    KIMI_BASE_URL: str = "https://api.moonshot.cn/v1"
 
-    DASHSCOPE_API_KEY: Optional[str] = None
-    DASHSCOPE_MODEL: str = "qwen-turbo"
-    DASHSCOPE_BASE_URL: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-
-    DEFAULT_LLM_PROVIDER: str = "qwen"
+    DEFAULT_LLM_PROVIDER: str = "minimax"
 
     # Embedding Model
     EMBEDDING_MODEL: str = "BAAI/bge-small-zh"

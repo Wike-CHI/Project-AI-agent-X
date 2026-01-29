@@ -10,7 +10,15 @@
       "WebFetch(domain:docs.langchain.com)",
       "WebFetch(domain:developers.llamaindex.ai)",
       "WebFetch(domain:github.com)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "mcp__context7__resolve-library-id",
+      "Bash(git -C \"D:\\\\gsxm\\\\agent\\\\Project-AI-agent-X\" log --oneline -20)",
+      "Bash(git -C \"D:\\\\gsxm\\\\agent\\\\Project-AI-agent-X\" branch -a)",
+      "Bash(find:*)",
+      "Bash(oc folder ls:*)",
+      "Bash(oc doc create:*)",
+      "Bash(set:*)",
+      "Bash(powershell:*)"
     ]
   }
 }

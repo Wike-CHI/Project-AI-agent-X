@@ -86,11 +86,11 @@ class RAGManager:
         Settings.embed_model = self.embedder
 
     def _init_llm(self):
-        """初始化 LLM"""
-        from llama_index.llms.ollama import Ollama
-        self.llm = Ollama(
+        """初始化 LLM (云端API)"""
+        from llama_index.llms.openai import OpenAI
+        self.llm = OpenAI(
             model=self.config.llm_model,
-            base_url=self.config.llm_base_url,
+            api_key=self.config.llm_api_key,
             temperature=self.config.llm_temperature
         )
         Settings.llm = self.llm

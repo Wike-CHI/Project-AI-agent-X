@@ -216,8 +216,8 @@ crew = Crew(
     tasks=[...],
     memory=True,  # 启用短期记忆
     embedder={
-        "provider": "ollama",
-        "config": {"model": "nomic-embed-text"}
+        "provider": "openai",  # 或 minimax
+        "config": {"model": "text-embedding-3-small"}
     }
 )
 ```

@@ -634,8 +634,7 @@
 
 | 接口 | 用途 | 稳定性 | 备选方案 |
 |-----|------|-------|---------|
-| MiniMax API | 云端LLM | 高 | OpenAI API |
-| Ollama | 本地LLM | 高 | Llama.cpp |
+| MiniMax API | 云端LLM | 高 | Kimi API |
 | HuggingFace | 嵌入模型 | 高 | 本地部署 |
 
 ---

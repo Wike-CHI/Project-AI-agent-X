@@ -18,7 +18,7 @@
   -webkit-backdrop-filter: blur(10px);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #7C3AED rgba(124, 58, 237, 0.1);
+  scrollbar-color: #6366F1 rgba(99, 102, 241, 0.1);
 }
 
 .store-content-wrapper::-webkit-scrollbar {
@@ -26,17 +26,17 @@
 }
 
 .store-content-wrapper::-webkit-scrollbar-track {
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(99, 102, 241, 0.05);
   border-radius: 10px;
 }
 
 .store-content-wrapper::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   border-radius: 10px;
 }
 
 .store-content-wrapper::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
 }
 
 .store-header {
@@ -85,7 +85,7 @@
 .store-search-input {
   width: 100%;
   padding: 12px 16px 12px 44px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #E2E8F0;
   border-radius: 8px;
   font-size: 15px;
   font-family: inherit;
@@ -93,8 +93,8 @@
 
 .store-search-input:focus {
   outline: none;
-  border-color: #7C3AED;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .store-tags {
@@ -121,7 +121,7 @@
 
 .tag-work {
   background-color: #EDE9FE;
-  color: #7C3AED;
+  color: #6366F1;
 }
 
 /* 分区标题 */
@@ -157,7 +157,7 @@
 }
 
 .agent-card:hover {
-  box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.12);
   transform: translateY(-4px);
 }
 
@@ -198,7 +198,7 @@
 .agent-card-btn {
   width: 100%;
   padding: 10px;
-  background-color: #7C3AED;
+  background-color: #6366F1;
   color: white;
   border: none;
   border-radius: 8px;
@@ -209,7 +209,7 @@
 }
 
 .agent-card-btn:hover {
-  background-color: #6D28D9;
+  background-color: #4F46E5;
 }
 
 .agent-card-btn.installed {
@@ -272,23 +272,23 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
 .btn-secondary {
-  background-color: #F5F3FF;
+  background-color: #E0E7FF;
   color: #404040;
 }
 
 .btn-secondary:hover {
-  background-color: #E5E5E5;
+  background-color: #E2E8F0;
   transform: translateY(-1px);
 }
 
@@ -312,4 +312,156 @@
   .agent-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== 深色模式 ===== */
+
+/* 主内容区 */
+.dark .store-content-wrapper {
+  background: rgba(15, 23, 42, 0.95);
+  color: #F8FAFC;
+}
+
+/* 标题 */
+.dark .store-header h1 {
+  color: #F8FAFC;
+}
+
+/* 商品卡片 */
+.dark .product-card {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.dark .product-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.2);
+}
+
+.dark .product-title {
+  color: #F8FAFC;
+}
+
+.dark .product-description {
+  color: #CBD5E1;
+}
+
+.dark .product-price {
+  color: #F8FAFC;
+}
+
+.dark .product-meta {
+  color: #94A3B8;
+}
+
+/* 分类标签 */
+.dark .category-tag {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #E2E8F0;
+}
+
+.dark .category-tag.active {
+  background-color: #6366F1;
+  color: white;
+}
+
+.dark .category-tag:hover {
+  background-color: rgba(99, 102, 241, 0.3);
+}
+
+/* 按钮 */
+.dark .btn-secondary {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #E2E8F0;
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Agent 卡片深色模式 */
+.dark .agent-card {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .agent-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.2);
+}
+
+.dark .agent-card-title {
+  color: #F8FAFC;
+}
+
+.dark .agent-card-description {
+  color: #CBD5E1;
+}
+
+.dark .agent-card-rating {
+  color: #F59E0B;
+}
+
+/* 分区标题 */
+.dark .section-title {
+  color: #F8FAFC;
+}
+
+/* 搜索栏 */
+.dark .search-icon {
+  color: #94A3B8;
+}
+
+.dark .store-search-input {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: #334155;
+  color: #F8FAFC;
+}
+
+.dark .store-search-input:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.dark .store-search-input::placeholder {
+  color: #64748B;
+}
+
+/* 标签 */
+.dark .tag-hot {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #F87171;
+}
+
+.dark .tag-work {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #818CF8;
+}
+
+/* 已激活的智能体 */
+.dark .my-agent-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .my-agent-stats {
+  color: #94A3B8;
+}
+
+/* Agent 卡片按钮 */
+.dark .agent-card-btn {
+  background-color: #6366F1;
+  color: white;
+}
+
+.dark .agent-card-btn:hover {
+  background-color: #4F46E5;
+}
+
+.dark .agent-card-btn.installed {
+  background-color: #10B981;
+}
+
+/* Agent 卡片图标深色模式 */
+.dark .agent-card-icon {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }

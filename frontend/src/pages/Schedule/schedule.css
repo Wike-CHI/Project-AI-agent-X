@@ -18,7 +18,7 @@
   -webkit-backdrop-filter: blur(10px);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #7C3AED rgba(124, 58, 237, 0.1);
+  scrollbar-color: #6366F1 rgba(99, 102, 241, 0.1);
 }
 
 .schedule-content-wrapper::-webkit-scrollbar {
@@ -26,17 +26,17 @@
 }
 
 .schedule-content-wrapper::-webkit-scrollbar-track {
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(99, 102, 241, 0.05);
   border-radius: 10px;
 }
 
 .schedule-content-wrapper::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   border-radius: 10px;
 }
 
 .schedule-content-wrapper::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
 }
 
 .schedule-header {
@@ -104,11 +104,11 @@
 }
 
 .calendar-day:hover {
-  background-color: #F5F3FF;
+  background-color: #E0E7FF;
 }
 
 .calendar-day.today {
-  background-color: #7C3AED;
+  background-color: #6366F1;
   color: white;
   font-weight: 600;
 }
@@ -135,12 +135,12 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #7C3AED;
+  border-left: 4px solid #6366F1;
   transition: all 0.2s;
 }
 
 .schedule-event:hover {
-  box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.12);
   transform: translateX(4px);
 }
 
@@ -263,23 +263,23 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
 .btn-secondary {
-  background-color: #F5F3FF;
+  background-color: #E0E7FF;
   color: #404040;
 }
 
 .btn-secondary:hover {
-  background-color: #E5E5E5;
+  background-color: #E2E8F0;
   transform: translateY(-1px);
 }
 
@@ -313,4 +313,93 @@
   .calendar-day {
     font-size: 12px;
   }
+}
+
+/* ===== 深色模式 ===== */
+
+/* 主内容区 */
+.dark .schedule-content-wrapper {
+  background: rgba(15, 23, 42, 0.95);
+  color: #F8FAFC;
+}
+
+/* 标题 */
+.dark .schedule-header h1 {
+  color: #F8FAFC;
+}
+
+/* 日历区域 */
+.dark .calendar-section {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.dark .calendar-title {
+  color: #F8FAFC;
+}
+
+.dark .calendar-weekday {
+  color: #94A3B8;
+}
+
+.dark .calendar-day {
+  color: #CBD5E1;
+}
+
+.dark .calendar-day:hover {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
+.dark .calendar-day.today {
+  background-color: #6366F1;
+  color: white;
+}
+
+/* 日程卡片 */
+.dark .day-title {
+  color: #F8FAFC;
+}
+
+.dark .schedule-event {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.dark .schedule-event:hover {
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.2);
+}
+
+.dark .schedule-event.warning {
+  background-color: rgba(30, 41, 59, 0.95);
+  border-left-color: #F59E0B;
+}
+
+.dark .event-time {
+  color: #94A3B8;
+}
+
+.dark .event-title {
+  color: #F8FAFC;
+}
+
+.dark .event-location {
+  color: #94A3B8;
+}
+
+/* 建议卡片 */
+.dark .suggestion-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .suggestion-content {
+  color: #6EE7B7;
+}
+
+/* 按钮 */
+.dark .btn-secondary {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #E2E8F0;
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgba(99, 102, 241, 0.3);
 }

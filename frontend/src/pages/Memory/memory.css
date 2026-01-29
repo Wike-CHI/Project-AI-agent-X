@@ -21,7 +21,7 @@
   overflow-y: auto;
   /* 自定义滚动条 */
   scrollbar-width: thin;
-  scrollbar-color: #7C3AED rgba(124, 58, 237, 0.1);
+  scrollbar-color: #6366F1 rgba(99, 102, 241, 0.1);
 }
 
 .memory-content-wrapper::-webkit-scrollbar {
@@ -29,17 +29,17 @@
 }
 
 .memory-content-wrapper::-webkit-scrollbar-track {
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(99, 102, 241, 0.05);
   border-radius: 10px;
 }
 
 .memory-content-wrapper::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   border-radius: 10px;
 }
 
 .memory-content-wrapper::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
 }
 
 .memory-header {
@@ -113,14 +113,14 @@
 }
 
 .filter-option:hover {
-  background-color: #F5F3FF;
+  background-color: #E0E7FF;
 }
 
 .filter-checkbox {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 2px solid #E5E5E5;
+  border: 2px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,8 +129,8 @@
 }
 
 .filter-checkbox.checked {
-  background-color: #7C3AED;
-  border-color: #7C3AED;
+  background-color: #6366F1;
+  border-color: #6366F1;
 }
 
 .filter-checkbox.checked::after {
@@ -164,7 +164,7 @@
 }
 
 .memory-card:hover {
-  box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.12);
   transform: translateY(-2px);
 }
 
@@ -175,7 +175,7 @@
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-  color: #7C3AED;
+  color: #6366F1;
 }
 
 .memory-card-title {
@@ -228,23 +228,23 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
 .btn-secondary {
-  background-color: #F5F3FF;
+  background-color: #E0E7FF;
   color: #404040;
 }
 
 .btn-secondary:hover {
-  background-color: #E5E5E5;
+  background-color: #E2E8F0;
   transform: translateY(-1px);
 }
 
@@ -273,4 +273,79 @@
   .memory-actions .btn {
     flex: 1;
   }
+}
+
+/* ===== 深色模式 ===== */
+
+/* 主内容区 */
+.dark .memory-content-wrapper {
+  background: rgba(15, 23, 42, 0.95);
+  color: #F8FAFC;
+}
+
+/* 标题 */
+.dark .memory-header h1 {
+  color: #F8FAFC;
+}
+
+/* 过滤面板 */
+.dark .filter-panel {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.dark .filter-title {
+  color: #F8FAFC;
+}
+
+.dark .filter-label {
+  color: #CBD5E1;
+}
+
+.dark .filter-option:hover {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
+.dark .filter-checkbox {
+  border-color: #334155;
+}
+
+.dark .filter-checkbox.checked {
+  background-color: #6366F1;
+  border-color: #6366F1;
+}
+
+.dark .filter-option-text {
+  color: #E2E8F0;
+}
+
+/* 记忆卡片 */
+.dark .memory-card {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .memory-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.2);
+}
+
+.dark .memory-card-title {
+  color: #F8FAFC;
+}
+
+.dark .memory-card-content {
+  color: #CBD5E1;
+}
+
+.dark .memory-card-meta {
+  color: #94A3B8;
+}
+
+/* 按钮 */
+.dark .btn-secondary {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #E2E8F0;
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgba(99, 102, 241, 0.3);
 }

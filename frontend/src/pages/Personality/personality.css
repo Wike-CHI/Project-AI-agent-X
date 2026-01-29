@@ -18,7 +18,7 @@
   -webkit-backdrop-filter: blur(10px);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #7C3AED rgba(124, 58, 237, 0.1);
+  scrollbar-color: #6366F1 rgba(99, 102, 241, 0.1);
 }
 
 .personality-content-wrapper::-webkit-scrollbar {
@@ -26,17 +26,17 @@
 }
 
 .personality-content-wrapper::-webkit-scrollbar-track {
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(99, 102, 241, 0.05);
   border-radius: 10px;
 }
 
 .personality-content-wrapper::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   border-radius: 10px;
 }
 
 .personality-content-wrapper::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
 }
 
 .personality-header {
@@ -55,7 +55,7 @@
 
 /* 头像预览区域 */
 .avatar-preview-section {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(129, 140, 248, 0.1) 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
@@ -66,13 +66,13 @@
   justify-content: center;
   gap: 16px;
   margin-bottom: 24px;
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 .avatar-preview {
   width: 150px;
   height: 150px;
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
   font-size: 48px;
   color: white;
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
 }
 
 .avatar-label {
@@ -94,7 +94,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: 12px;
   padding: 24px;
   display: flex;
@@ -130,7 +130,7 @@
 
 .param-value {
   font-size: 14px;
-  color: #7C3AED;
+  color: #6366F1;
   font-weight: 500;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .param-slider-fill.primary {
-  background-color: #7C3AED;
+  background-color: #6366F1;
 }
 
 .param-slider-fill.warning {
@@ -203,7 +203,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #7C3AED;
+  background: #6366F1;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
@@ -211,14 +211,14 @@
 
 .param-range::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
 }
 
 .param-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #7C3AED;
+  background: #6366F1;
   cursor: pointer;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -227,7 +227,7 @@
 
 .param-range::-moz-range-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
 }
 
 /* 按钮样式 */
@@ -258,14 +258,14 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
 /* 响应式 */
@@ -289,4 +289,78 @@
   .personality-params {
     padding: 16px;
   }
+}
+
+/* ===== 深色模式 ===== */
+
+/* 主内容区 */
+.dark .personality-content-wrapper {
+  background: rgba(15, 23, 42, 0.95);
+  color: #F8FAFC;
+}
+
+/* 标题 */
+.dark .personality-header h1 {
+  color: #F8FAFC;
+}
+
+/* 头像预览区域 */
+.dark .avatar-preview-section {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(129, 140, 248, 0.15) 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.dark .avatar-label {
+  color: #94A3B8;
+}
+
+/* 性格参数区域 */
+.dark .personality-params {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.dark .params-title {
+  color: #F8FAFC;
+}
+
+.dark .param-label {
+  color: #F8FAFC;
+}
+
+.dark .param-value {
+  color: #818CF8;
+}
+
+.dark .param-description {
+  color: #94A3B8;
+}
+
+/* 滑动条 */
+.dark .param-slider {
+  background-color: #312E81;
+}
+
+.dark .param-scale {
+  color: #94A3B8;
+}
+
+.dark .param-range {
+  background: #312E81;
+}
+
+.dark .param-range::-webkit-slider-thumb {
+  background: #818CF8;
+}
+
+.dark .param-range::-webkit-slider-thumb:hover {
+  box-shadow: 0 4px 8px rgba(129, 140, 248, 0.4);
+}
+
+.dark .param-range::-moz-range-thumb {
+  background: #818CF8;
+}
+
+.dark .param-range::-moz-range-thumb:hover {
+  box-shadow: 0 4px 8px rgba(129, 140, 248, 0.4);
 }

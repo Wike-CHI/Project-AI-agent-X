@@ -5,9 +5,16 @@ from app.schemas.pydantic_models import (
     UserResponse,
     Token,
     Message,
+    ChatRequest,
+    ChatResponse,
     AgentResponse,
+    AgentCreate,
     TaskRequest,
     TaskResponse,
+    MemoryCreate,
+    MemoryResponse,
+    MemorySearchRequest,
+    MemorySearchResponse,
 )
 
 __all__ = [
@@ -15,7 +22,14 @@ __all__ = [
     "UserResponse",
     "Token",
     "Message",
+    "ChatRequest",
+    "ChatResponse",
     "AgentResponse",
+    "AgentCreate",
     "TaskRequest",
     "TaskResponse",
+    "MemoryCreate",
+    "MemoryResponse",
+    "MemorySearchRequest",
+    "MemorySearchResponse",
 ]

@@ -3,7 +3,7 @@ API Routes
 """
 from fastapi import APIRouter
 
-from app.api import auth, agents, chat, memory, tasks
+from app.api import auth, agents, chat, memory, tasks, record
 
 router = APIRouter()
 
@@ -13,3 +13,4 @@ router.include_router(agents.router, prefix="/agents", tags=["Agents"])
 router.include_router(chat.router, prefix="/chat", tags=["Chat"])
 router.include_router(memory.router, prefix="/memory", tags=["Memory"])
 router.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
+router.include_router(record.router, prefix="/record", tags=["Record"])

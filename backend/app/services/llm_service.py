@@ -1,5 +1,5 @@
 """
-LLM Service - Multi-Provider Support
+LLM Service - Multi-Provider Support (MiniMax + Kimi)
 """
 from typing import Optional, Dict, Any
 from enum import Enum
@@ -9,9 +9,8 @@ from app.core.config import settings
 
 class LLMProvider(str, Enum):
     """Supported LLM providers."""
-    OPENAI = "openai"
-    ANTHROPIC = "anthropic"
-    QWEN = "qwen"
+    MINIMAX = "minimax"
+    KIMI = "kimi"
 
 
 class LLMService:
@@ -19,53 +18,39 @@ class LLMService:
     LLM Service with multi-provider support.
 
     Supports:
-    - OpenAI (GPT-4, GPT-3.5)
-    - Anthropic (Claude)
-    - Alibaba Qwen (通义千问)
+    - MiniMax (M2.1)
+    - Kimi (K2.5)
     """
 
     def __init__(self, provider: str = None):
         self.provider = provider or settings.DEFAULT_LLM_PROVIDER
         self._clients: Dict[str, Any] = {}
 
-    def _get_openai_client(self):
-        """Get or create OpenAI client."""
-        if "openai" not in self._clients:
+    def _get_minimax_client(self):
+        """Get or create MiniMax client."""
+        if "minimax" not in self._clients:
             try:
                 from openai import AsyncOpenAI
-                self._clients["openai"] = AsyncOpenAI(
-                    api_key=settings.OPENAI_API_KEY,
-                    base_url=settings.OPENAI_BASE_URL
+                self._clients["minimax"] = AsyncOpenAI(
+                    api_key=settings.MINIMAX_API_KEY,
+                    base_url=settings.MINIMAX_BASE_URL
                 )
             except ImportError:
                 pass
-        return self._clients.get("openai")
+        return self._clients.get("minimax")
 
-    def _get_anthropic_client(self):
-        """Get or create Anthropic client."""
-        if "anthropic" not in self._clients:
-            try:
-                from anthropic import AsyncAnthropic
-                self._clients["anthropic"] = AsyncAnthropic(
-                    api_key=settings.ANTHROPIC_API_KEY
-                )
-            except ImportError:
-                pass
-        return self._clients.get("anthropic")
-
-    def _get_qwen_client(self):
-        """Get or create Qwen client."""
-        if "qwen" not in self._clients:
+    def _get_kimi_client(self):
+        """Get or create Kimi client."""
+        if "kimi" not in self._clients:
             try:
                 from openai import AsyncOpenAI
-                # Qwen compatible with OpenAI API
-                self._clients["qwen"] = AsyncOpenAI(
-                    api_key=settings.DASHSCOPE_API_KEY,
-                    base_url=settings.DASHSCOPE_BASE_URL
+                self._clients["kimi"] = AsyncOpenAI(
+                    api_key=settings.KIMI_API_KEY,
+                    base_url=settings.KIMI_BASE_URL
                 )
             except ImportError:
                 pass
-        return self._clients.get("qwen")
+        return self._clients.get("kimi")
 
     async def complete(
         self,
@@ -88,31 +73,21 @@ class LLMService:
         """
         provider = provider or self.provider
 
-        if provider == LLMProvider.OPENAI.value:
-            client = self._get_openai_client()
+        if provider == LLMProvider.MINIMAX.value:
+            client = self._get_minimax_client()
             if client:
                 response = await client.chat.completions.create(
-                    model=model or settings.OPENAI_MODEL,
+                    model=model or settings.MINIMAX_MODEL,
                     messages=[{"role": "user", "content": prompt}],
                     **kwargs
                 )
                 return response.choices[0].message.content
 
-        elif provider == LLMProvider.ANTHROPIC.value:
-            client = self._get_anthropic_client()
-            if client:
-                response = await client.messages.create(
-                    model=model or settings.ANTHROPIC_MODEL,
-                    max_tokens=kwargs.get("max_tokens", 4096),
-                    messages=[{"role": "user", "content": prompt}]
-                )
-                return response.content[0].text
-
-        elif provider == LLMProvider.QWEN.value:
-            client = self._get_qwen_client()
+        elif provider == LLMProvider.KIMI.value:
+            client = self._get_kimi_client()
             if client:
                 response = await client.chat.completions.create(
-                    model=model or settings.DASHSCOPE_MODEL,
+                    model=model or settings.KIMI_MODEL,
                     messages=[{"role": "user", "content": prompt}],
                     **kwargs
                 )
@@ -135,11 +110,11 @@ class LLMService:
         """
         provider = provider or self.provider
 
-        if provider == LLMProvider.OPENAI.value:
-            client = self._get_openai_client()
+        if provider == LLMProvider.MINIMAX.value:
+            client = self._get_minimax_client()
             if client:
                 stream = await client.chat.completions.create(
-                    model=model or settings.OPENAI_MODEL,
+                    model=model or settings.MINIMAX_MODEL,
                     messages=[{"role": "user", "content": prompt}],
                     stream=True,
                     **kwargs
@@ -148,11 +123,11 @@ class LLMService:
                     if chunk.choices[0].delta.content:
                         yield chunk.choices[0].delta.content
 
-        elif provider == LLMProvider.QWEN.value:
-            client = self._get_qwen_client()
+        elif provider == LLMProvider.KIMI.value:
+            client = self._get_kimi_client()
             if client:
                 stream = await client.chat.completions.create(
-                    model=model or settings.DASHSCOPE_MODEL,
+                    model=model or settings.KIMI_MODEL,
                     messages=[{"role": "user", "content": prompt}],
                     stream=True,
                     **kwargs

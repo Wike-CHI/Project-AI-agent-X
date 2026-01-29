@@ -151,3 +151,19 @@
     background-position: 0% 50%;
   }
 }
+
+/* 页面过渡动画 */
+.page-content {
+  animation: pageSlideIn 0.3s ease-out;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

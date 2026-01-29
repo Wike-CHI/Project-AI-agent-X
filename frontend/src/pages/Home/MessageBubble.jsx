@@ -12,8 +12,8 @@ export default function MessageBubble({ message }) {
         className={`avatar avatar-sm ${isCompanion ? 'companion-avatar' : 'user-avatar'}`}
         style={{
           background: isCompanion
-            ? 'linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)'
-            : 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)',
+            ? 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)'
+            : 'linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%)',
         }}
       >
         {isCompanion ? '艾' : '张'}
@@ -28,8 +28,8 @@ export default function MessageBubble({ message }) {
           <span
             className="emotion-badge"
             style={{
-              background: 'linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%)',
-              color: '#EC4899',
+              background: 'linear-gradient(135deg, #CCFBF1 0%, #CFFAFE 100%)',
+              color: '#0D9488',
             }}
           >
             {message.emotion}

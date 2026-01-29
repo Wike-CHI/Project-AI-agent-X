@@ -2,11 +2,13 @@ import { useAtom } from 'jotai';
 import { settingsAtom } from '../../store/atoms';
 import { User, Bot, Shield, Palette, Check } from 'lucide-react';
 import { useState } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
 import './settings.css';
 
 export default function Settings() {
   const [settings, setSettings] = useAtom(settingsAtom);
-  const [theme, setTheme] = useState('system');
+  const { theme, setTheme } = useTheme();
   const [fontSize, setFontSize] = useState('default');
   const [companionPosition, setCompanionPosition] = useState('left');
   const [privacyEnabled, setPrivacyEnabled] = useState([true, true]);
@@ -19,6 +21,13 @@ export default function Settings() {
     setTheme(newTheme);
     updateSetting('theme', newTheme);
   };
+
+  // 确保本地状态与 next-themes 同步
+  useEffect(() => {
+    if (theme) {
+      setTheme(theme);
+    }
+  }, []);
 
   const handleFontSizeChange = (newFontSize) => {
     setFontSize(newFontSize);

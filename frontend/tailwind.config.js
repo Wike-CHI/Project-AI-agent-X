@@ -8,41 +8,86 @@ export default {
   theme: {
     extend: {
       colors: {
-        // AI紫色主题
+        // 主色系 - AI Indigo (更柔和、专业)
         primary: {
-          DEFAULT: '#7C3AED',
-          hover: '#6D28D9',
-          light: '#EDE9FE',
-          50: '#FAF5FF',
-          100: '#F5F3FF',
-          200: '#EDE9FE',
-          500: '#8B5CF6',
-          600: '#7C3AED',
-          700: '#6D28D9',
+          DEFAULT: '#6366F1', // Indigo-500
+          hover: '#4F46E5',   // Indigo-600
+          light: '#EEF2FF',   // Indigo-50
+          50: '#EEF2FF',
+          100: '#E0E7FF',
+          200: '#C7D2FE',
+          300: '#A5B4FC',
+          400: '#818CF8',
+          500: '#6366F1',
+          600: '#4F46E5',
+          700: '#4338CA',
+          800: '#3730A3',
+          900: '#312E81',
+          950: '#1E1B4B',
         },
-        // CTA青色
+        // 辅助色 - Teal (护眼、现代)
+        secondary: {
+          DEFAULT: '#14B8A6', // Teal-500
+          hover: '#0D9488',   // Teal-600
+          light: '#CCFBF1',   // Teal-50
+          50: '#F0FDFA',
+          100: '#CCFBF1',
+          200: '#99F6E4',
+          300: '#5EEAD4',
+          400: '#2DD4BF',
+          500: '#14B8A6',
+          600: '#0D9488',
+          700: '#0F766E',
+          800: '#115E59',
+          900: '#134E4A',
+          950: '#042F2E',
+        },
+        // CTA 青色 (保持原有但优化)
         cta: {
-          DEFAULT: '#06B6D4',
-          hover: '#0891B2',
-          light: '#CFFAFE',
+          DEFAULT: '#06B6D4', // Cyan-500
+          hover: '#0891B2',   // Cyan-600
+          light: '#CFFAFE',   // Cyan-50
+          50: '#ECFEFF',
+          100: '#CFFAFE',
+          200: '#A5F3FC',
+          300: '#67E8F9',
+          400: '#22D3EE',
+          500: '#06B6D4',
+          600: '#0891B2',
+          700: '#0E7490',
+          800: '#155E75',
+          900: '#164E63',
+          950: '#083344',
         },
         // 功能色
-        success: '#10B981',
-        warning: '#F59E0B',
-        error: '#EF4444',
-        info: '#3B82F6',
-        // 背景色
+        success: {
+          DEFAULT: '#10B981', // Emerald-500
+          light: '#D1FAE5',   // Emerald-100
+        },
+        warning: {
+          DEFAULT: '#F59E0B', // Amber-500
+          light: '#FEF3C7',   // Amber-100
+        },
+        error: {
+          DEFAULT: '#EF4444', // Red-500
+          light: '#FEE2E2',   // Red-100
+        },
+        info: {
+          DEFAULT: '#3B82F6', // Blue-500
+          light: '#DBEAFE',   // Blue-100
+        },
+        // 背景色和前景色
         background: '#FFFFFF',
-        foreground: '#171717',
+        foreground: '#0F172A', // Slate-900
         // 文字颜色
-        'text-primary': '#171717',
-        'text-secondary': '#404040',
-        'text-muted': '#737373',
-        'text-light': '#A3A3A3',
-        // 边框
-        border: '#E5E5E5',
-        input: '#E5E5E5',
-        ring: '#7C3AED',
+        'text-primary': '#0F172A',   // Slate-900
+        'text-secondary': '#475569', // Slate-600
+        'text-muted': '#94A3B8',     // Slate-400
+        'text-light': '#CBD5E1',     // Slate-300
+        // 边框和输入框
+        border: '#E2E8F0', // Slate-200
+        input: '#E2E8F0',
+        ring: '#6366F1',   // 匹配新的 primary
       },
       borderRadius: {
         sm: '8px',
@@ -52,9 +97,12 @@ export default {
       },
       boxShadow: {
         sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        md: '0 2px 8px 0 rgba(124, 58, 237, 0.08)',
-        lg: '0 8px 16px -4px rgba(124, 58, 237, 0.12)',
-        xl: '0 12px 24px -8px rgba(124, 58, 237, 0.15)',
+        md: '0 2px 8px 0 rgba(99, 102, 241, 0.08)',
+        lg: '0 8px 16px -4px rgba(99, 102, 241, 0.12)',
+        xl: '0 12px 24px -8px rgba(99, 102, 241, 0.15)',
+        'primary': '0 4px 12px rgba(99, 102, 241, 0.25)',
+        'secondary': '0 4px 12px rgba(20, 184, 166, 0.25)',
+        'cta': '0 4px 12px rgba(6, 182, 212, 0.3)',
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],

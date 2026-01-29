@@ -1,0 +1,29 @@
+# Docker Compose 配置（可选）
+# 如果你不想用Docker，可以直接本地安装数据库
+# 详见: docs/本地数据库安装指南.md
+
+version: '3.8'
+
+services:
+  # Qdrant 向量数据库 (可选)
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # Neo4j 图数据库 (可选)
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/neo4j_password
+    volumes:
+      - neo4j_data:/data
+
+volumes:
+  qdrant_data:
+  neo4j_data:

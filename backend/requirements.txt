@@ -18,6 +18,9 @@ passlib[bcrypt]==1.7.4
 crewai>=0.95.0
 agno>=1.0.0
 
+# AI Gateway - LiteLLM
+litellm>=1.0.0
+
 # RAG Framework
 llama-index==0.10.48
 llama-index-llms-openai>=0.1.13,<0.2.0

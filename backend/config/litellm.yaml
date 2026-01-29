@@ -1,0 +1,22 @@
+"""
+LiteLLM Configuration for AI Gateway
+Supports MiniMax and Kimi with unified API
+"""
+model_list:
+  - model_name: minimax-m2.1
+    litellm_params:
+      model: minimax/m2.1
+      api_key: env:MINIMAX_API_KEY
+      base_url: https://api.minimax.chat/v1/text/chatcompletion_v2
+
+  - model_name: kimi-k2.5
+    litellm_params:
+      model: moonshot/kimi-k2.5
+      api_key: env:KIMI_API_KEY
+      base_url: https://api.moonshot.cn/v1
+
+general_settings:
+  master_key: ${LITELLM_MASTER_KEY}
+
+litellm_settings:
+  set_verbose: true

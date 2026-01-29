@@ -1,10 +1,21 @@
 """
-LLM Service - Multi-Provider Support (MiniMax + Kimi)
+LLM Service - Multi-Provider Support via AI Gateway (LiteLLM)
+
+Supports:
+- MiniMax (M2.1)
+- Kimi (K2.5)
+
+Uses LiteLLM for unified API abstraction.
 """
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, AsyncGenerator
 from enum import Enum
 
 from app.core.config import settings
+from app.services.gateway_service import (
+    get_gateway_service,
+    AIGatewayService,
+    GatewayResponse,
+)
 
 
 class LLMProvider(str, Enum):
@@ -15,48 +26,42 @@ class LLMProvider(str, Enum):
 
 class LLMService:
     """
-    LLM Service with multi-provider support.
+    LLM Service with multi-provider support via AI Gateway.
 
-    Supports:
-    - MiniMax (M2.1)
-    - Kimi (K2.5)
+    Uses LiteLLM for:
+    - Unified API abstraction
+    - Provider routing
+    - Cost tracking
     """
+
+    # Model aliases
+    PROVIDER_MODEL_MAP = {
+        LLMProvider.MINIMAX.value: "minimax-m2.1",
+        LLMProvider.KIMI.value: "kimi-k2.5",
+    }
 
     def __init__(self, provider: str = None):
         self.provider = provider or settings.DEFAULT_LLM_PROVIDER
-        self._clients: Dict[str, Any] = {}
+        self._gateway: Optional[AIGatewayService] = None
 
-    def _get_minimax_client(self):
-        """Get or create MiniMax client."""
-        if "minimax" not in self._clients:
-            try:
-                from openai import AsyncOpenAI
-                self._clients["minimax"] = AsyncOpenAI(
-                    api_key=settings.MINIMAX_API_KEY,
-                    base_url=settings.MINIMAX_BASE_URL
-                )
-            except ImportError:
-                pass
-        return self._clients.get("minimax")
+    @property
+    def gateway(self) -> AIGatewayService:
+        """Lazy load gateway service."""
+        if self._gateway is None:
+            self._gateway = get_gateway_service()
+        return self._gateway
 
-    def _get_kimi_client(self):
-        """Get or create Kimi client."""
-        if "kimi" not in self._clients:
-            try:
-                from openai import AsyncOpenAI
-                self._clients["kimi"] = AsyncOpenAI(
-                    api_key=settings.KIMI_API_KEY,
-                    base_url=settings.KIMI_BASE_URL
-                )
-            except ImportError:
-                pass
-        return self._clients.get("kimi")
+    def get_model_for_provider(self, provider: str) -> str:
+        """Get the default model for a provider."""
+        return self.PROVIDER_MODEL_MAP.get(provider, "minimax-m2.1")
 
     async def complete(
         self,
         prompt: str,
         provider: str = None,
         model: str = None,
+        temperature: float = 0.7,
+        max_tokens: int = 4096,
         **kwargs
     ) -> str:
         """
@@ -65,76 +70,153 @@ class LLMService:
         Args:
             prompt: The prompt to complete
             provider: LLM provider to use (defaults to configured provider)
-            model: Model to use (provider-specific)
+            model: Model to use (overrides provider default)
+            temperature: Sampling temperature (0-1)
+            max_tokens: Maximum tokens to generate
             **kwargs: Additional arguments for the LLM
 
         Returns:
             Generated text response
         """
         provider = provider or self.provider
+        model = model or self.get_model_for_provider(provider)
 
-        if provider == LLMProvider.MINIMAX.value:
-            client = self._get_minimax_client()
-            if client:
-                response = await client.chat.completions.create(
-                    model=model or settings.MINIMAX_MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    **kwargs
-                )
-                return response.choices[0].message.content
+        messages = [{"role": "user", "content": prompt}]
 
-        elif provider == LLMProvider.KIMI.value:
-            client = self._get_kimi_client()
-            if client:
-                response = await client.chat.completions.create(
-                    model=model or settings.KIMI_MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    **kwargs
-                )
-                return response.choices[0].message.content
+        response: GatewayResponse = await self.gateway.chat_completion(
+            messages=messages,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs
+        )
 
-        raise ValueError(f"Unsupported provider: {provider}")
+        return response.content
+
+    async def chat_complete(
+        self,
+        messages: list,
+        provider: str = None,
+        model: str = None,
+        temperature: float = 0.7,
+        max_tokens: int = 4096,
+        **kwargs
+    ) -> str:
+        """
+        Generate chat completion for messages.
+
+        Args:
+            messages: List of chat messages [{role, content}]
+            provider: LLM provider to use
+            model: Model to use
+            temperature: Sampling temperature
+            max_tokens: Maximum tokens to generate
+            **kwargs: Additional arguments
+
+        Returns:
+            Generated text response
+        """
+        provider = provider or self.provider
+        model = model or self.get_model_for_provider(provider)
+
+        response: GatewayResponse = await self.gateway.chat_completion(
+            messages=messages,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs
+        )
+
+        return response.content
 
     async def stream_complete(
         self,
         prompt: str,
         provider: str = None,
         model: str = None,
+        temperature: float = 0.7,
+        max_tokens: int = 4096,
         **kwargs
-    ):
+    ) -> AsyncGenerator[str, None]:
         """
         Stream completion for a prompt.
+
+        Args:
+            prompt: The prompt to complete
+            provider: LLM provider to use
+            model: Model to use
+            temperature: Sampling temperature
+            max_tokens: Maximum tokens to generate
+            **kwargs: Additional arguments
 
         Yields:
             Chunks of generated text
         """
         provider = provider or self.provider
+        model = model or self.get_model_for_provider(provider)
 
-        if provider == LLMProvider.MINIMAX.value:
-            client = self._get_minimax_client()
-            if client:
-                stream = await client.chat.completions.create(
-                    model=model or settings.MINIMAX_MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    stream=True,
-                    **kwargs
-                )
-                async for chunk in stream:
-                    if chunk.choices[0].delta.content:
-                        yield chunk.choices[0].delta.content
+        messages = [{"role": "user", "content": prompt}]
 
-        elif provider == LLMProvider.KIMI.value:
-            client = self._get_kimi_client()
-            if client:
-                stream = await client.chat.completions.create(
-                    model=model or settings.KIMI_MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    stream=True,
-                    **kwargs
-                )
-                async for chunk in stream:
-                    if chunk.choices[0].delta.content:
-                        yield chunk.choices[0].delta.content
+        async for chunk in self.gateway.stream_chat_completion(
+            messages=messages,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs
+        ):
+            yield chunk
+
+    async def stream_chat_complete(
+        self,
+        messages: list,
+        provider: str = None,
+        model: str = None,
+        temperature: float = 0.7,
+        max_tokens: int = 4096,
+        **kwargs
+    ) -> AsyncGenerator[str, None]:
+        """
+        Stream chat completion for messages.
+
+        Args:
+            messages: List of chat messages
+            provider: LLM provider to use
+            model: Model to use
+            temperature: Sampling temperature
+            max_tokens: Maximum tokens to generate
+            **kwargs: Additional arguments
+
+        Yields:
+            Chunks of generated text
+        """
+        provider = provider or self.provider
+        model = model or self.get_model_for_provider(provider)
+
+        async for chunk in self.gateway.stream_chat_completion(
+            messages=messages,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs
+        ):
+            yield chunk
+
+    def get_available_models(self) -> list:
+        """Get list of available models."""
+        return self.gateway.get_available_models()
+
+    def calculate_cost(
+        self,
+        model: str,
+        prompt_tokens: int,
+        completion_tokens: int
+    ) -> float:
+        """Calculate cost for token usage."""
+        usage = {
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": completion_tokens,
+        }
+        return self.gateway.calculate_cost(model, usage)
 
 
 # Singleton instance
